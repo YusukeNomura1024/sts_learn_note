@@ -19,6 +19,28 @@
 　　入力後確認用ページでも、type="hidden"を使って、値を渡していく必要がある
 　　　確認表示用にth:text=で表示をさせて、それとは別に、input type="hidden" th:value="xxx"
 
+　フォームエリア
+　　送る範囲をformタグで囲む
+　　　method="post" actionはドメインが変わることもあるので、"#"としておく
+　　　th:actionで@{/survey/comfirm}としておくと@はドメインの意味となる
+　　int型でデータを送る場合はtype="number"とした方がいい
+　　
+　　ラジオボタン
+　　　<label for="satisfaction">満足度:</label>
+	<input type="radio" name="satisfaction" value="1" th:checked="*{satisfaction == 1}">1
+	<input type="radio" name="satisfaction" value="2" th:checked="*{satisfaction == 2}">2
+	<input type="radio" name="satisfaction" value="3" th:checked="*{satisfaction == 3}">3
+	<input type="radio" name="satisfaction" value="4" th:checked="*{satisfaction == 4}">4
+	<input type="radio" name="satisfaction" value="5" th:checked="*{satisfaction == 5}">5<br>
+　　　一致するフォーム名はすべて揃えて、戻ってきたときに、選択した値が自動で選ばれるように
+　　　satisfactionが1であれば1のチェックボックスのcheckedがtrueになりそれ以外はfalseになる
+　　　　初めて入力フォームに来たときは、空白なので、チェックはついていない
+　　エラー表示
+　　　th:if="${#fields.hasErrors('エラーを表示させたいフィールド名')}" th:errors="*{エラーを表示させたいフィールド名}"
+      とすることで、そのフィールドにあったエラーを表示できる。
+　　　　#fieldsにはそのフォームに関する情報が入っており、hasErrorsと引数でエラーの有無を確認
+　　　　th:ifとすることで、エラーがあればそのエラー文を表示できる。
+　　　　<div th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
 
 コントローラー
 　@Controllerをクラスの上に付ける
@@ -30,6 +52,8 @@
 　値を渡す
 　　ページのタイトルを状況によって変えたい場合
 　　　model.addAttribute("title", "渡したい文字列")というようにtitleという変数に文字列を書くのして渡す
+　　
+　　メソッドの引数にForm系のクラスを渡すすることで、ビューにフォームのデータが渡される
 　
 　値を受け取る
 　　コントローラーの別のメソッドからリダイレクトされた時など
