@@ -1,0 +1,27 @@
+@PostMapping("/complete")
+	public String complete(@Validated InquiryForm inquiryForm,
+			BindingResult result,
+			Model model,
+			RedirectAttributes redirectAttributes) {
+
+
+コントローラー
+　値を渡す
+　　ページのタイトルを状況によって変えたい場合
+　　　model.addAttribute("title", "渡したい文字列")というようにtitleという変数に文字列を書くのして渡す
+
+
+　バリデーション
+　　@Validatedアノテーションを受け取ったFormクラスに設定する
+　　BindingResult型の引数を追加することで、Validatedの検証をする
+　　バリデーションエラー時は現在のページにとどまるようにする。
+　　　if(result.hasErrors())でresultにえらがあれば検知できる
+　　　現在のページにとどまるときも、現在のページを再び表示するためのmodelを渡す
+　　
+
+　保存
+　　二重保存を防ぐためにRedirectAttributesクラスを引数に加える
+　　RedirectAttributes redirectAttributes
+
+　ページの繊維
+　　return "パス"文字列を返すことで、そのパスにあったテンプレートを表示させる
