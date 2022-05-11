@@ -5,7 +5,7 @@
 			RedirectAttributes redirectAttributes) {
 
 ビュー
-　渡された値を表示させる
+　渡された値を表示させる 
 　　一時的に表示させる場合
 　　　コントローラーで@ModelAttribute というアノテーションが付いた引数は設定した変数名で呼び出せる
 　　特定のリダイレクトのみ表示
