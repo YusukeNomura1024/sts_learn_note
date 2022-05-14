@@ -4,43 +4,6 @@
 			Model model,
 			RedirectAttributes redirectAttributes) {
 
-ビュー
-　渡された値を表示させる 
-　　一時的に表示させる場合
-　　　コントローラーで@ModelAttribute というアノテーションが付いた引数は設定した変数名で呼び出せる
-　　特定のリダイレクトのみ表示
-　　　コントローラーでフラッシュアットリビュートなどで渡された値を@ModelAttributeで受け取れば　　　　　<h2 th:text="${complete}"></h2>というようにすれば、completeという変数が渡された時のみ表示
-　オブジェクトを丸ごと受け取る
-　　th:object="${}" オブジェクトのフィールドを使用したいタグ、もしくは親のタグに付ける
-　　　以降はth:xxx="*{xx}"とすることで、objectのxxというフィールドを取り出せる
-　フォームに値を渡す
-　　th:value th:fieldなど値の状況により使い分ける。
-　フォーム後の確認ページ
-　　入力後確認用ページでも、type="hidden"を使って、値を渡していく必要がある
-　　　確認表示用にth:text=で表示をさせて、それとは別に、input type="hidden" th:value="xxx"
-
-　フォームエリア
-　　送る範囲をformタグで囲む
-　　　method="post" actionはドメインが変わることもあるので、"#"としておく
-　　　th:actionで@{/survey/comfirm}としておくと@はドメインの意味となる
-　　int型でデータを送る場合はtype="number"とした方がいい
-　　
-　　ラジオボタン
-　　　<label for="satisfaction">満足度:</label>
-	<input type="radio" name="satisfaction" value="1" th:checked="*{satisfaction == 1}">1
-	<input type="radio" name="satisfaction" value="2" th:checked="*{satisfaction == 2}">2
-	<input type="radio" name="satisfaction" value="3" th:checked="*{satisfaction == 3}">3
-	<input type="radio" name="satisfaction" value="4" th:checked="*{satisfaction == 4}">4
-	<input type="radio" name="satisfaction" value="5" th:checked="*{satisfaction == 5}">5<br>
-　　　一致するフォーム名はすべて揃えて、戻ってきたときに、選択した値が自動で選ばれるように
-　　　satisfactionが1であれば1のチェックボックスのcheckedがtrueになりそれ以外はfalseになる
-　　　　初めて入力フォームに来たときは、空白なので、チェックはついていない
-　　エラー表示
-　　　th:if="${#fields.hasErrors('エラーを表示させたいフィールド名')}" th:errors="*{エラーを表示させたいフィールド名}"
-      とすることで、そのフィールドにあったエラーを表示できる。
-　　　　#fieldsにはそのフォームに関する情報が入っており、hasErrorsと引数でエラーの有無を確認
-　　　　th:ifとすることで、エラーがあればそのエラー文を表示できる。
-　　　　<div th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
 
 コントローラー
 　@Controllerをクラスの上に付ける
