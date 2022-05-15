@@ -57,4 +57,4 @@
 	    </tr>
         ```
         * コントローラーから渡されたinquiryListというList型のデータを、inquiryという変数に一つずつ取り出して、処理を繰り返すという意味になります。
-        * このinquiryはentityのinquiryクラスですので、フィールドに設定されている
+        * このinquiryはentityのinquiryクラスですので、フィールドに設定されているので、inquiryに続けてドット＋フィールド名で値を取り出せます。
