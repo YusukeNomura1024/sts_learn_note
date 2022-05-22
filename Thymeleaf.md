@@ -58,3 +58,16 @@
         ```
         * コントローラーから渡されたinquiryListというList型のデータを、inquiryという変数に一つずつ取り出して、処理を繰り返すという意味になります。
         * このinquiryはentityのinquiryクラスですので、フィールドに設定されているので、inquiryに続けてドット＋フィールド名で値を取り出せます。
+
+## 条件分岐
+```
+        <div th:unless="${#strings.isEmpty(complete)}" >
+            <div th:text="${complete}" class="alert alert-success" role="alert">
+                A simple success alert—check it out!
+		    </div>
+	    </div>
+```
+* この記述は、complete変数の中に値が格納されていなかったらという意味の記述になります。
+    * th:unlessでtrueじゃないときに表示できるようにします。
+    * つまり、completeが空じゃないときに表示するということになる。
+

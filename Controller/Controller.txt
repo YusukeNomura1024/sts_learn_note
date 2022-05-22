@@ -24,6 +24,11 @@
 　　@ModelAttribute("complete") String complete
     　このように、completeという変数に格納されているデータをここでは、String型のcompleteという変数に入れなおして渡しています。
 
+	* リクエストパラメーターを受け取る
+		* 引数に@RequestParam("taskId") int id,のように追加する
+		* @RequestParamは通常String型で渡ってくるが、上記のように記述することで、int型に変換される。
+		
+
 
 
 
@@ -45,6 +50,18 @@
 　　　　正確に言うとセッションにデータが書くのされている形となる
 　　　　セッションは一度読み込まれた時点でデータは破棄されるので、2重登録を防げる
 　　　　　redirect:を使って、フォーム送信したら、リダイレクトすることで回避できる
+	```
+	    @PostMapping("/update")
+		public String update(
+			@Valid @ModelAttribute TaskForm taskForm,
+			BindingResult result,
+			@RequestParam("taskId") int taskId,
+			Model model,
+			RedirectAttributes redirectAttributes) {
+	```
+	上記のように、引数に、RedirectAttributesを入れる
+
+
 
 　ページの遷移
 　　return "パス"文字列を返すことで、そのパスにあったテンプレートを表示させる
@@ -53,6 +70,8 @@
 　　　バリデーションエラー時、2重登録回避などの時につかう
 　　　return "redirect:/xxxxx/"とする
 　　　　このredirect:とすることで、テンプレートファイル名を指すのではなく、URL名を指すことになります
+	* リダイレクトの時はコントローラ―を実行させ、リクエストの時はビューファイルを呼び出します。
+	
 
 フォーム
 　値を一つずつやり取りするのではなく、インプットエリアに入力されたデータを一括でやり取りする
