@@ -1,0 +1,5 @@
+curl -H "Content-type: application/json" -X POST -d '{"id": 10, "value": "Request"}' http://localhost:8080/hello
+
+こうすることで、フォーム送信が実装できていなくても確認ができる。
+
+逆に、送信後の処理が実装できていなくても、どんなデータを送っているかは確認ができる。
