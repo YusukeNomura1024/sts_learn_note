@@ -1,0 +1,10 @@
+Spring MVC ではコントローラクラスにアノテーションで@Controllerまたは@RestControllerを付ける。
+
+@Controllerは主にWebページ用のコントローラで使用する。
+
+Webページ用コントローラはJSPやテンプレートエンジンのViewに遷移してレスポンスのHTMLを生成するので、基本的にメソッドの戻り値はViewの遷移先を指定するのに使用する。
+
+
+@RestControllerはJsonやXML等を返すWebAPI用のコントローラで使用する。
+こちらはViewに遷移しないのでメソッドの戻り値はレスポンスのコンテンツになる。
+

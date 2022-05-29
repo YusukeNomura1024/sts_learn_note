@@ -1,0 +1,33 @@
+package sample.springboot.web;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/hello")
+public class HelloController {
+
+    @RequestMapping(method=RequestMethod.GET)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public void getMethod() {
+    }
+}
+
+$ curl http://localhost:8080/hello -v
+（略）
+
+< HTTP/1.1 400 Bad Request
+* Server Apache-Coyote/1.1 is not blacklisted
+< Server: Apache-Coyote/1.1
+< Content-Length: 0
+< Date: Wed, 29 Apr 2015 11:50:08 GMT
+< Connection: close
+
+（略）
+
+メソッドを @ResponseStatus でアノテートし、 value にステータスコードを指定すると、そのレスポンスのステータスコードを指定できる。
+
+何も指定しない場合は 200 OK が返される。

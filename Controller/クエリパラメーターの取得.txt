@@ -1,0 +1,28 @@
+package sample.springboot.web;
+
+import java.util.Map;
+* Mapを使うと、キーとなる文字と、その値がマップ型として取得できる。
+* １つのパラメータに複数の値が設定されている場合は、 Spring が提供する MultiValueMap で受け取ることができる。
+	* 重複するキーがない値も配列として一つだけ格納される
+* String型を指定すると、変数名と一致するキーの値が格納される
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/hello")
+public class HelloController {
+
+    @RequestMapping(method=RequestMethod.GET)
+    public void getMethod(
+            @RequestParam String id,
+            @RequestParam Map<String, String> queryParameters,
+            @RequestParam MultiValueMap<String, String> multiMap) {
+
+        System.out.println("id=" + id);
+        System.out.println(queryParameters);
+        System.out.println(multiMap);
+    }
+}
