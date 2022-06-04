@@ -1,0 +1,22 @@
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label">性別</label>
+		<div class="col-sm-9">
+			<div class="custom-control custom-radio custom-control-inline is-invalid">
+				<input class="custom-control-input is-invalid" type="radio"
+					name="sex[]" id="form_sex_10" value="10" /> <label
+					class="custom-control-label" for="form_sex_10" id="form_sex_10">男性</label>		
+			</div>
+			<div class="custom-control custom-radio custom-control-inline is-invalid">
+				<input class="custom-control-input is-invalid" type="radio"
+					name="sex[]" id="form_sex_20" value="20" /> <label
+					class="custom-control-label" for="form_sex_20" id="form_sex_20">女性</label>				
+			</div>
+			<div class="custom-control custom-radio custom-control-inline is-invalid">
+				<input class="custom-control-input is-invalid" type="radio"
+					name="sex[]" id="form_sex_30" value="30" /> <label
+					class="custom-control-label" for="form_sex_30" id="form_sex_30">回答しない</label>				
+			</div>
+			<div class="invalid-feedback">性別が選択されていません。</div>
+		</div>
+	</div>
+こういう状態にしたい
